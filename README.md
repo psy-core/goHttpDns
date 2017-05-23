@@ -1,18 +1,19 @@
 ## goHttpDns
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/zheng-ji/goHttpDns)](https://goreportcard.com/report/github.com/zheng-ji/goHttpDns)
+[![Go Report Card](https://goreportcard.com/badge/psy-core/goHttpDns)](https://goreportcard.com/report/github.com/psy-core/goHttpDns)
 
 A HttpDns Server Written by Go, In order to avoid Dns hijacking and cache resolve answer
 
-一个用 Go 写的 HttpDns 服务, 为了抵抗运营商邪恶的 DNS 劫持污染，并带有缓存功能 。
+Go HttpDns 服务, 抵抗 DNS 劫持污染，并带有缓存功能 。
+
+Fork From：[http://github.com/zheng-ji/goHttpDns](http://github.com/zheng-ji/goHttpDns)
 
 ### How To Compile
 
 ```
 cd $GOPATH;
-git clone http://github.com/zheng-ji/goHttpDns;
-cd src;
-make
+git clone http://github.com/psy-core/goHttpDns;
+./build.sh
 ```
 
 ### How To Configure
@@ -21,7 +22,15 @@ make
 # redis connect config
 redis:
   host: 127.0.0.1:6379
+  network: tcp
   db: 0
+  connectTimeout: 5000
+  readTimeout: 10000
+  writeTimeout: 10000
+  maxActive: 3
+  maxIdle: 5
+  idleTimeout: 10
+  wait: false
 
 # seelog config 
 log_config: ../etc/logger.xml
@@ -41,17 +50,11 @@ dnsservers:
 
 ### How To Run
 
-After `make`, a binary executable file called `httpDns` will be generated under the `bin` directory
-
+After `./build.sh`
 ```
-$ ./httpDns --help
-Usage of ./httpDns:
-  -c="../etc/conf.yml": conf file，default is ../etc/conf.yml
-
-./httpDns -c="your_conf_yaml_path"
+$ cd dist
+$ bin/start.sh
 ```
-
-You can also use `supervisor` to start your sever
 
 ### How To Use
 
@@ -75,7 +78,6 @@ Thanks to:
 * [cihub/seelog](github.com/cihub/seelog)
 * [miekg/dns](github.com/miekg/dns)
 * [redisgo/redis](github.com/garyburd/redigo/redis")
-* [hoisie/web](github.com/hoisie/web)
 
 You need to `go get` the list above
 
