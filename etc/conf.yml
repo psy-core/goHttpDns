@@ -1,7 +1,15 @@
 # redis 连接配置
 redis:
   host: 127.0.0.1:6379
+  network: tcp
   db: 0
+  connectTimeout: 5000
+  readTimeout: 10000
+  writeTimeout: 10000
+  maxActive: 3
+  maxIdle: 5
+  idleTimeout: 10
+  wait: false
 
 # 日志(出错信息，调试信息)配置路径
 log_config: ../etc/logger.xml

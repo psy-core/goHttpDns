@@ -1,13 +1,16 @@
 <seelog minlevel="debug">
     <outputs>
         <filter levels="debug">
-            <rollingfile formatid="sended" type="date" filename="../log/httpDns" archivetype="zip" datepattern="2006-01-02" />
+            <console formatid="sended"/>
+            <rollingfile formatid="sended" type="date" filename="../log/httpDns.log" archivetype="zip" datepattern="2006-01-02" />
         </filter>
         <filter levels="info">
-            <rollingfile formatid="info" type="date" filename="../log/httpDns" archivetype="zip" datepattern="2006-01-02" />
+            <console  formatid="info"/>
+            <rollingfile formatid="info" type="date" filename="../log/httpDns.log" archivetype="zip" datepattern="2006-01-02" />
         </filter>
         <filter levels="warn,error,critical">
-            <rollingfile formatid="error" type="date" filename="../log/httpDns" archivetype="zip" datepattern="2006-01-02" />
+            <console formatid="error"/>
+            <rollingfile formatid="error" type="date" filename="../log/httpDns.log" archivetype="zip" datepattern="2006-01-02" />
         </filter>
     </outputs>
     <formats>
